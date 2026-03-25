@@ -1,0 +1,4 @@
+2026-03-26 00:01:04,384 [INFO] test_orders - TEST: Delete order by giving non existant order id
+2026-03-26 00:01:04,384 [INFO] OrdersPage - Deleting order with ID: 8faafe85-70f2-47cc-8cb9-4a292a8af73a
+2026-03-26 00:01:04,384 [INFO] api_client - DELETE Request https://reqres.in/api/collections/orders/records/8faafe85-70f2-47cc-8cb9-4a292a8af73a
+2026-03-26 00:01:04,659 [INFO] conftest - PASSED  :: tests/test_orders.py::TestDeleteOrder::test_delete_order_by_wrong_non_existant_id

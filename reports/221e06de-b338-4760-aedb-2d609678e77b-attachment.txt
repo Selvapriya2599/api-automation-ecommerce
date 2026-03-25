@@ -1,0 +1,4 @@
+[32mINFO    [0m test_orders:test_orders.py:81 TEST: GET ORDER BY INVALID ORDER ID
+[32mINFO    [0m OrdersPage:ordersPage.py:23 Getting order details for id 8faafe8570f2-73a
+[32mINFO    [0m api_client:api_client.py:19 GET Request https://reqres.in/api/collections/orders/records/8faafe8570f2-73a  & params=None
+[35mDEBUG   [0m api_client:api_client.py:21  500: {"error":"fetch_record_failed","message":"Unable to retrieve the record. Please retry the request or contact support if the problem persists."}

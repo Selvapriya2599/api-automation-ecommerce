@@ -1,0 +1,9 @@
+[32mINFO    [0m conftest:conftest.py:40 SETUP: CREATING A TEST PRODUCT
+[32mINFO    [0m OrdersPage:ordersPage.py:18 Creating successful order for: {'data': {'status': 'pending', 'order_date': '2026-03-20=1', 'product_ids': [1, 3], 'total_amount': 3571, 'customer_name': 'Setup User', 'customer_email': 'setup.user@example.com'}}
+[32mINFO    [0m api_client:api_client.py:26 POST Request https://reqres.in/api/collections/orders/records  & payload={'data': {'status': 'pending', 'order_date': '2026-03-20=1', 'product_ids': [1, 3], 'total_amount': 3571, 'customer_name': 'Setup User', 'customer_email': 'setup.user@example.com'}}
+[35mDEBUG   [0m api_client:api_client.py:28  201: {"data":{"id":"6cf5a7c7-2165-4a70-8474-27006d57e3f4","collection_id":"dd7f605f-01c9-4c39-8bb9-9a1655ef1044","project_id":6380,"app_user_id":null,"created_by":99391,"created_at":"2026-03-25T17:51:19.076Z","updated_at":"2026-03-25T17:51:19.076Z","deleted_at":null,"data":{"status":"pending","order_date
+[32mINFO    [0m conftest:conftest.py:58 Test product created: 6cf5a7c7-2165-4a70-8474-27006d57e3f4
+[32mINFO    [0m test_orders:test_orders.py:98 TEST: Delete order with order id
+[32mINFO    [0m OrdersPage:ordersPage.py:33 Deleting order with ID: 6cf5a7c7-2165-4a70-8474-27006d57e3f4
+[32mINFO    [0m api_client:api_client.py:40 DELETE Request https://reqres.in/api/collections/orders/records/6cf5a7c7-2165-4a70-8474-27006d57e3f4
+[35mDEBUG   [0m api_client:api_client.py:42  204:

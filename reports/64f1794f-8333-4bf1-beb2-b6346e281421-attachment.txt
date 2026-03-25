@@ -1,0 +1,9 @@
+2026-03-25 23:21:15,589 [INFO] conftest - SETUP: CREATING A TEST PRODUCT
+2026-03-25 23:21:15,590 [INFO] OrdersPage - Creating successful order for: {'data': {'status': 'pending', 'order_date': '2026-03-20=1', 'product_ids': [1, 3], 'total_amount': 3571, 'customer_name': 'Setup User', 'customer_email': 'setup.user@example.com'}}
+2026-03-25 23:21:15,590 [INFO] api_client - POST Request https://reqres.in/api/collections/orders/records  & payload={'data': {'status': 'pending', 'order_date': '2026-03-20=1', 'product_ids': [1, 3], 'total_amount': 3571, 'customer_name': 'Setup User', 'customer_email': 'setup.user@example.com'}}
+2026-03-25 23:21:15,912 [INFO] conftest - Test product created: fa786596-620e-44de-a576-4dd280c00c15
+2026-03-25 23:21:15,913 [INFO] test_orders - TEST: GET ORDER BY ORDER ID
+2026-03-25 23:21:15,913 [INFO] OrdersPage - Getting order details for id fa786596-620e-44de-a576-4dd280c00c15
+2026-03-25 23:21:15,913 [INFO] api_client - GET Request https://reqres.in/api/collections/orders/records/fa786596-620e-44de-a576-4dd280c00c15  & params=None
+2026-03-25 23:21:16,257 [INFO] test_orders - Order Id: fa786596-620e-44de-a576-4dd280c00c15exists for Setup User User
+2026-03-25 23:21:16,258 [INFO] conftest - PASSED  :: tests/test_orders.py::TestGetOrders::test_get_order_by_id
