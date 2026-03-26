@@ -1,4 +1,0 @@
-2026-03-26 00:00:59,546 [INFO] test_login - TEST: Login with valid credentials
-2026-03-26 00:00:59,547 [INFO] LoginPage - Logging in selva@gmail.com
-2026-03-26 00:00:59,547 [INFO] api_client - POST Request https://reqres.in/api/login  & payload={'email': 'selva@gmail.com', 'password': 'cityslicka'}
-2026-03-26 00:00:59,798 [INFO] conftest - PASSED  :: tests/test_login.py::TestLogin::test_login_wrong_email

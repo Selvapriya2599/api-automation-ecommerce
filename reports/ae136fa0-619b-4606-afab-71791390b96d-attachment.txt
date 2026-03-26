@@ -1,4 +1,0 @@
-2026-03-26 00:01:02,818 [INFO] test_orders - TEST: GET ORDER BY INVALID ORDER ID
-2026-03-26 00:01:02,818 [INFO] OrdersPage - Getting order details for id 8faafe8570f2-73a
-2026-03-26 00:01:02,818 [INFO] api_client - GET Request https://reqres.in/api/collections/orders/records/8faafe8570f2-73a  & params=None
-2026-03-26 00:01:03,184 [INFO] conftest - PASSED  :: tests/test_orders.py::TestGetOrders::test_get_order_with_invalid_orderid

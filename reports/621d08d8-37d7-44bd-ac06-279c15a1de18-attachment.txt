@@ -1,4 +1,0 @@
-[32mINFO    [0m test_login:test_login.py:27 TEST: Login with valid credentials
-[32mINFO    [0m LoginPage:loginPage.py:11 Logging in selva@gmail.com
-[32mINFO    [0m api_client:api_client.py:26 POST Request https://reqres.in/api/login  & payload={'email': 'selva@gmail.com', 'password': 'cityslicka'}
-[35mDEBUG   [0m api_client:api_client.py:28  400: {"error":"user not found"}

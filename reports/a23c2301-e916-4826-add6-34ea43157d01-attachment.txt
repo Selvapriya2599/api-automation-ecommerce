@@ -1,9 +1,0 @@
-2026-03-25 23:45:48,025 [INFO] conftest - SETUP: CREATING A TEST PRODUCT
-2026-03-25 23:45:48,025 [INFO] OrdersPage - Creating successful order for: {'data': {'status': 'pending', 'order_date': '2026-03-20=1', 'product_ids': [1, 3], 'total_amount': 3571, 'customer_name': 'Setup User', 'customer_email': 'setup.user@example.com'}}
-2026-03-25 23:45:48,026 [INFO] api_client - POST Request https://reqres.in/api/collections/orders/records  & payload={'data': {'status': 'pending', 'order_date': '2026-03-20=1', 'product_ids': [1, 3], 'total_amount': 3571, 'customer_name': 'Setup User', 'customer_email': 'setup.user@example.com'}}
-2026-03-25 23:45:48,261 [INFO] conftest - Test product created: 578bfb24-a2a5-4e95-8b10-cf82abed5d78
-2026-03-25 23:45:48,263 [INFO] test_orders - TEST: Update order status delivered for the existing order
-2026-03-25 23:45:48,264 [INFO] OrdersPage - Updating status of order with id 578bfb24-a2a5-4e95-8b10-cf82abed5d78 to delivered
-2026-03-25 23:45:48,264 [INFO] api_client - Patch Request https://reqres.in/api/collections/orders/records/578bfb24-a2a5-4e95-8b10-cf82abed5d78  & payload={'data': {'status': 'delivered'}}
-2026-03-25 23:45:48,497 [INFO] test_orders - Status: delivered and Updated at: 2026-03-25T18:15:46.389Z
-2026-03-25 23:45:48,499 [INFO] conftest - PASSED  :: tests/test_orders.py::TestUpdateOrder::test_update_order_by_id
