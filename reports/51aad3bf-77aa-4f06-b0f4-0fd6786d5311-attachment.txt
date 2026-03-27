@@ -1,4 +1,0 @@
-2026-03-25 23:45:47,187 [INFO] test_orders - TEST: GET ORDER BY NON EXISTNAT ORDER ID
-2026-03-25 23:45:47,188 [INFO] OrdersPage - Getting order details for id 8faafe85-70f2-47cc-8cb9-4a292a8af73a
-2026-03-25 23:45:47,188 [INFO] api_client - GET Request https://reqres.in/api/collections/orders/records/8faafe85-70f2-47cc-8cb9-4a292a8af73a  & params=None
-2026-03-25 23:45:47,601 [INFO] conftest - PASSED  :: tests/test_orders.py::TestGetOrders::test_get_order_with_non_existant_orderid

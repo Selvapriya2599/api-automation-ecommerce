@@ -1,4 +1,0 @@
-[32mINFO    [0m test_login:test_login.py:43 TEST: Login with valid credentials
-[32mINFO    [0m LoginPage:loginPage.py:11 Logging in eve.holt@reqres.in
-[32mINFO    [0m api_client:api_client.py:26 POST Request https://reqres.in/api/login  & payload={'email': 'eve.holt@reqres.in', 'password': ''}
-[35mDEBUG   [0m api_client:api_client.py:28  400: {"error":"Missing password"}

@@ -1,5 +1,0 @@
-[32mINFO    [0m test_orders:test_orders.py:21 TEST: Creating a successful order
-[32mINFO    [0m OrdersPage:ordersPage.py:18 Creating successful order for: {'data': {'status': 'delivered', 'order_date': '2026-03-20', 'product_ids': [3, 5], 'total_amount': 3998, 'customer_name': 'Shankar Raja', 'customer_email': 'shankar.raja@example.com'}}
-[32mINFO    [0m api_client:api_client.py:26 POST Request https://reqres.in/api/collections/orders/records  & payload={'data': {'status': 'delivered', 'order_date': '2026-03-20', 'product_ids': [3, 5], 'total_amount': 3998, 'customer_name': 'Shankar Raja', 'customer_email': 'shankar.raja@example.com'}}
-[35mDEBUG   [0m api_client:api_client.py:28  201: {"data":{"id":"6526d55d-4b4c-4179-abb9-69a56e727ed7","collection_id":"dd7f605f-01c9-4c39-8bb9-9a1655ef1044","project_id":6380,"app_user_id":null,"created_by":99391,"created_at":"2026-03-25T18:15:43.476Z","updated_at":"2026-03-25T18:15:43.476Z","deleted_at":null,"data":{"status":"delivered","order_da
-[32mINFO    [0m test_orders:test_orders.py:35 order successfully created for Shankar Raja and the order id is 6526d55d-4b4c-4179-abb9-69a56e727ed7

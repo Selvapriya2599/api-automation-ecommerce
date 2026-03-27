@@ -1,5 +1,0 @@
-2026-03-25 23:21:12,813 [INFO] test_orders - TEST: Creating a successful order
-2026-03-25 23:21:12,814 [INFO] OrdersPage - Creating successful order for: {'data': {'status': 'delivered', 'order_date': '2026-03-20', 'product_ids': [3, 5], 'total_amount': 3998, 'customer_name': 'Shankar Raja', 'customer_email': 'shankar.raja@example.com'}}
-2026-03-25 23:21:12,815 [INFO] api_client - POST Request https://reqres.in/api/collections/orders/records  & payload={'data': {'status': 'delivered', 'order_date': '2026-03-20', 'product_ids': [3, 5], 'total_amount': 3998, 'customer_name': 'Shankar Raja', 'customer_email': 'shankar.raja@example.com'}}
-2026-03-25 23:21:13,724 [INFO] test_orders - order successfully created for Shankar Raja and the order id is bbb959df-aff5-470c-ab25-ca0591b3fe6c
-2026-03-25 23:21:13,726 [INFO] conftest - PASSED  :: tests/test_orders.py::TestCreateOrders::test_create_successful_order
