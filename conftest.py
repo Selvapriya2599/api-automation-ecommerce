@@ -2,6 +2,7 @@ import pytest
 
 from pages.loginPage import LoginPage
 from pages.ordersPage import OrdersPage
+from pages.productsPage import ProductsPage
 from utils.logger import get_logger
 
 logger = get_logger("conftest")
@@ -14,6 +15,10 @@ def login_page():
 @pytest.fixture(scope="session")
 def orders_page():
     return OrdersPage()
+
+@pytest.fixture(scope="session")
+def products_page():
+    return ProductsPage()
 
 @pytest.fixture(scope="session")
 def valid_user():
@@ -36,8 +41,20 @@ def orders_payload():
     }
 
 @pytest.fixture(scope="class")
+def products_payload():
+    return {
+      "data": {
+      "name": "CeraVe BodyLotion",
+      "price": 2000,
+      "stock": 200,
+      "category": "Bath&Beauty",
+      "image_url": "https://example.com/images/creave-lotion.jpg",
+      "description": "Creave Body Lotion with Ceramide and Chia butter for Dry to Extreme Dry skin"
+    }}
+    
+@pytest.fixture(scope="class")
 def create_order_id(orders_page):
-    logger.info("SETUP: CREATING A TEST PRODUCT")
+    logger.info("SETUP: CREATING A TEST ORDER")
     result = orders_page.create_successful_order({
      "data": {
           "status": "pending",
@@ -49,6 +66,27 @@ def create_order_id(orders_page):
            "total_amount": 3571,
            "customer_name": "Setup User",
            "customer_email": "setup.user@example.com"
+        }
+    })
+    assert result["status"] in (200,201)
+    data = result["body"]["data"]
+    assert "id" in data.keys()
+    product_id = data["id"]
+    logger.info(f"Test product created: {product_id}")
+    return product_id
+
+
+@pytest.fixture(scope="class")
+def create_product_id(products_page):
+    logger.info("SETUP: CREATING A TEST PRODUCT")
+    result = products_page.addProduct({
+     "data": {
+      "name": "Test Prodcut",
+      "price": 2000,
+      "stock": 210,
+      "category": "Bath&Beauty",
+      "image_url": "https://example.com/images/test-product.jpg",
+      "description": "This is a test product"
         }
     })
     assert result["status"] in (200,201)

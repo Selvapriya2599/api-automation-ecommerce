@@ -1,0 +1,16 @@
+[32mINFO    [0m test_orders:test_orders.py:57 TEST: Get available orders
+[32mINFO    [0m OrdersPage:ordersPage.py:13 Getting order details
+[32mINFO    [0m api_client:api_client.py:19 GET Request https://reqres.in/api/collections/orders/records  & params=None
+[35mDEBUG   [0m api_client:api_client.py:21  200: {"data":[{"id":"a5b9f0bc-d095-49eb-8216-d882aa6ac5b4","collection_id":"dd7f605f-01c9-4c39-8bb9-9a1655ef1044","project_id":6380,"app_user_id":null,"created_by":99391,"created_at":"2026-03-25T18:30:58.420Z","updated_at":"2026-03-25T18:30:58.420Z","deleted_at":null,"data":{"status":"delivered","order_d
+[32mINFO    [0m test_orders:test_orders.py:62 No of orders received: 39
+[32mINFO    [0m test_orders:test_orders.py:65 delivered
+[32mINFO    [0m test_orders:test_orders.py:65 pending
+[32mINFO    [0m test_orders:test_orders.py:65 pending
+[32mINFO    [0m test_orders:test_orders.py:65 delivered
+[32mINFO    [0m test_orders:test_orders.py:65 pending
+[32mINFO    [0m test_orders:test_orders.py:65 pending
+[32mINFO    [0m test_orders:test_orders.py:65 delivered
+[32mINFO    [0m test_orders:test_orders.py:65 pending
+[32mINFO    [0m test_orders:test_orders.py:65 pending
+[32mINFO    [0m test_orders:test_orders.py:65 delivered
+[32mINFO    [0m test_orders:test_orders.py:65 pending

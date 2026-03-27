@@ -1,0 +1,5 @@
+2026-03-25 23:45:43,587 [INFO] test_login - TEST: Login with valid credentials
+2026-03-25 23:45:43,588 [INFO] LoginPage - Logging in eve.holt@reqres.in
+2026-03-25 23:45:43,589 [INFO] api_client - POST Request https://reqres.in/api/login  & payload={'email': 'eve.holt@reqres.in', 'password': 'cityslicka'}
+2026-03-25 23:45:44,208 [INFO] test_login - Token: QpwL5tke4Pnpja7X4
+2026-03-25 23:45:44,211 [INFO] conftest - PASSED  :: tests/test_login.py::TestLogin::test_login_success

@@ -1,0 +1,10 @@
+2026-03-25 23:21:13,747 [INFO] test_orders - TEST: Get available orders
+2026-03-25 23:21:13,748 [INFO] OrdersPage - Getting order details
+2026-03-25 23:21:13,748 [INFO] api_client - GET Request https://reqres.in/api/collections/orders/records  & params=None
+2026-03-25 23:21:15,436 [INFO] test_orders - No of orders received: 33
+2026-03-25 23:21:15,436 [INFO] test_orders - delivered
+2026-03-25 23:21:15,436 [INFO] test_orders - pending
+2026-03-25 23:21:15,437 [INFO] test_orders - pending
+2026-03-25 23:21:15,437 [INFO] test_orders - delivered
+2026-03-25 23:21:15,437 [INFO] test_orders - pending
+2026-03-25 23:21:15,579 [ERROR] conftest - FAILED  :: tests/test_orders.py::TestGetOrders::test_get_orders
