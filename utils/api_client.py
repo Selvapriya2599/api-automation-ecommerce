@@ -14,30 +14,33 @@ class APIClient:
         
         return {"x-api-key":key,"Content-Type": "application/json"}
     
+    def request(self, method: str, endpoint: str,use_manage: bool = False,**kwargs) -> requests.Response:
+        url = f"{self.base_url}{endpoint}"
+        logger.info(f"{method.upper()} {url} | kwargs={kwargs}")
+
+        try:
+            response = self.session.request(
+                method=method,
+                url=url,
+                headers=self._header(use_manage),
+                timeout=10,       
+                **kwargs
+            )
+            logger.debug(f"{response.status_code}: {response.text[:300]}")
+            return response
+
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Request failed: {e}")
+            raise
+    
     def get(self,endpoint: str, params: dict = None) -> requests.Response:
-        url = f"{self.base_url}{endpoint}"
-        logger.info(f"GET Request {url}  & params={params}")
-        res = self.session.get(url,headers=self._header(),params=params)
-        logger.debug(f" {res.status_code}: {res.text[:300]}")
-        return res
+        return self.request("get", endpoint, params=params)
     
-    def post(self,endpoint:str,payload:dict) -> requests.Response:
-        url = f"{self.base_url}{endpoint}"
-        logger.info(f"POST Request {url}  & payload={payload}")
-        res = self.session.post(url,headers=self._header(use_manage=True),json=payload)
-        logger.debug(f" {res.status_code}: {res.text[:300]}")
-        return res
-    
-    def patch(self,endpoint:str,payload:dict) -> requests.Response:
-        url = f"{self.base_url}{endpoint}"
-        logger.info(f"Patch Request {url}  & payload={payload}")
-        res = self.session.patch(url,headers=self._header(use_manage=True),json=payload)
-        logger.debug(f" {res.status_code}: {res.text[:300]}")
-        return res
-    
-    def delete(self,endpoint:str) -> requests.Response :
-        url = f"{self.base_url}{endpoint}"
-        logger.info(f"DELETE Request {url}")
-        res = self.session.delete(url, headers=self._header(use_manage=True))
-        logger.debug(f" {res.status_code}: {res.text[:300]}")
-        return res
+    def post(self, endpoint: str, payload: dict) -> requests.Response:
+        return self.request("post", endpoint, json=payload, use_manage=True)
+
+    def patch(self, endpoint: str, payload: dict) -> requests.Response:
+        return self.request("patch", endpoint, json=payload, use_manage=True)
+
+    def delete(self, endpoint: str) -> requests.Response:
+        return self.request("delete", endpoint, use_manage=True)

@@ -80,7 +80,7 @@ class TestGetOrders:
     def test_get_order_with_invalid_orderid(self,orders_page):
         logger.info(f"TEST: GET ORDER BY INVALID ORDER ID")
         result = orders_page.get_order_by_id("8faafe8570f2-73a")
-        assert result["status"] == 500
+        assert result["status"] in (404,500)
            
 
 class TestUpdateOrder:

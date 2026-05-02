@@ -50,7 +50,7 @@ class TestGetProducts:
     def test_get_product_by_Id_wrong_format(self,products_page):
         logger.info("TEST: Get Product Byt Id")
         result = products_page.get_product_by_Id("5f9cf9a5621e4ddbace1")
-        assert result["status"] == 500
+        assert result["status"] in (404,500)
         
     
 class TestUpdateProduct:

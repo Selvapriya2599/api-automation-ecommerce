@@ -5,7 +5,7 @@ from utils.logger import get_logger
 logger = get_logger("OrdersPage")
 EndPoint = "/api/collections/orders/records"
 
-class OrdersPage:
+class OrdersService:
     def __init__(self):
         self.client = APIClient()
         

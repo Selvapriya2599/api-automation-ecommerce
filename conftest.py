@@ -1,24 +1,24 @@
 import pytest
 
-from pages.loginPage import LoginPage
-from pages.ordersPage import OrdersPage
-from pages.productsPage import ProductsPage
+from services.loginService import LoginService
+from services.ordersService import OrdersService
+from services.productsService import ProductsService
 from utils.logger import get_logger
 
 logger = get_logger("conftest")
 
 @pytest.fixture(scope="session")
 def login_page():
-    return LoginPage()
+    return LoginService()
 
 
 @pytest.fixture(scope="session")
 def orders_page():
-    return OrdersPage()
+    return OrdersService()
 
 @pytest.fixture(scope="session")
 def products_page():
-    return ProductsPage()
+    return ProductsService()
 
 @pytest.fixture(scope="session")
 def valid_user():
@@ -58,7 +58,7 @@ def create_order_id(orders_page):
     result = orders_page.create_successful_order({
      "data": {
           "status": "pending",
-           "order_date": "2026-03-20=1",
+           "order_date": "2026-03-20-1",
            "product_ids": [
               1,
               3
@@ -72,9 +72,8 @@ def create_order_id(orders_page):
     data = result["body"]["data"]
     assert "id" in data.keys()
     product_id = data["id"]
-    logger.info(f"Test product created: {product_id}")
+    logger.info(f"Test product created: {product_id}")    
     return product_id
-
 
 @pytest.fixture(scope="class")
 def create_product_id(products_page):
@@ -104,3 +103,4 @@ def pytest_runtest_logreport(report):
             logger.error(f"FAILED  :: {report.nodeid}")
         elif report.skipped:
             logger.warning(f"SKIPPED :: {report.nodeid}")
+            
