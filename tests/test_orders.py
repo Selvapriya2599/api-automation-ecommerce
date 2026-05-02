@@ -17,9 +17,9 @@ logger = get_logger("test_orders")
 VALID_STATUSES = ["pending", "shipped", "delivered", "cancelled"]
 
 class TestCreateOrders: 
-    def test_create_successful_order(self,orders_page,orders_payload):
+    def test_create_successful_order(self,orders_service,orders_payload):
         logger.info("TEST: Creating a successful order")
-        result = orders_page.create_successful_order(orders_payload)
+        result = orders_service.create_successful_order(orders_payload)
         assert result["status"] in (200,201)
         data = result["body"]["data"]
         assert "id" in data.keys()
@@ -35,9 +35,9 @@ class TestCreateOrders:
         logger.info(f"order successfully created for {data["data"].get("customer_name")} and the order id is {data.get("id")}")
     
     @pytest.mark.skip(reason="reqres is not validating the mandatory fieleds") 
-    def test_create_order_with_missing_customerName(self,orders_page):
+    def test_create_order_with_missing_customerName(self,orders_service):
         logger.info("TEST: Creating order with missing customer name")
-        result = orders_page.create_successful_order({
+        result = orders_service.create_successful_order({
         "data": {
           "status": "pending",
            "order_date": "2026-03-20=1",
@@ -53,9 +53,9 @@ class TestCreateOrders:
         assert result["status"] in (400,422)
         
 class TestGetOrders:
-    def test_get_orders(self,orders_page):
+    def test_get_orders(self,orders_service):
         logger.info(f"TEST: Get available orders")
-        result = orders_page.get_orders()
+        result = orders_service.get_orders()
         assert result["status"] == 200
         data = result["body"]
         assert isinstance(data, (dict,list))
@@ -64,44 +64,44 @@ class TestGetOrders:
             assert item["data"]["status"] in VALID_STATUSES
             logger.info(item["data"]["status"])
             
-    def test_get_order_by_id(self,orders_page,create_order_id):
+    def test_get_order_by_id(self,orders_service,create_order_id):
         logger.info(f"TEST: GET ORDER BY ORDER ID")
-        result = orders_page.get_order_by_id(create_order_id)
+        result = orders_service.get_order_by_id(create_order_id)
         assert result["status"] == 200
         data = result["body"]["data"]
         assert data["id"] == create_order_id
         logger.info(f"Order Id: {data["id"] }exists for {data["data"]["customer_name"]} User")
         
-    def test_get_order_with_non_existant_orderid(self,orders_page):
+    def test_get_order_with_non_existant_orderid(self,orders_service):
         logger.info(f"TEST: GET ORDER BY NON EXISTNAT ORDER ID")
-        result = orders_page.get_order_by_id("8faafe85-70f2-47cc-8cb9-4a292a8af73a")
+        result = orders_service.get_order_by_id("8faafe85-70f2-47cc-8cb9-4a292a8af73a")
         assert result["status"] == 404
         
-    def test_get_order_with_invalid_orderid(self,orders_page):
+    def test_get_order_with_invalid_orderid(self,orders_service):
         logger.info(f"TEST: GET ORDER BY INVALID ORDER ID")
-        result = orders_page.get_order_by_id("8faafe8570f2-73a")
+        result = orders_service.get_order_by_id("8faafe8570f2-73a")
         assert result["status"] in (404,500)
            
 
 class TestUpdateOrder:
             
-    def test_update_order_by_id(self,orders_page,create_order_id):
+    def test_update_order_by_id(self,orders_service,create_order_id):
         logger.info(f"TEST: Update order status delivered for the existing order")
-        result = orders_page.update_order_by_id(create_order_id,{"data": {"status": "delivered"}})
+        result = orders_service.update_order_by_id(create_order_id,{"data": {"status": "delivered"}})
         assert result["status"] == 200
         data = result["body"]
         assert data["data"]["status"] == "delivered"
         logger.info(f"Status: { data["data"]["status"]} and Updated at: {data["updatedAt"]}")
         
 class TestDeleteOrder:
-    def test_delete_order_by_id(self,orders_page,create_order_id):
+    def test_delete_order_by_id(self,orders_service,create_order_id):
         logger.info(f"TEST: Delete order with order id")
-        result = orders_page.delete_order_by_id(create_order_id)
+        result = orders_service.delete_order_by_id(create_order_id)
         assert result["status"] == 204
         
-    def test_delete_order_by_wrong_non_existant_id(self,orders_page):
+    def test_delete_order_by_wrong_non_existant_id(self,orders_service):
         logger.info(f"TEST: Delete order by giving non existant order id")
-        result = orders_page.delete_order_by_id("8faafe85-70f2-47cc-8cb9-4a292a8af73a")
+        result = orders_service.delete_order_by_id("8faafe85-70f2-47cc-8cb9-4a292a8af73a")
         assert result["status"] == 404
        
         

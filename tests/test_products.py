@@ -4,9 +4,9 @@ from utils.logger import get_logger
 logger = get_logger("TestProducts")
 
 class TestCreateProduct:
-    def test_add_product(self,products_page,products_payload):
+    def test_add_product(self,products_service,products_payload):
         logger.info("TEST: Add a new product to the catalogue")
-        result = products_page.addProduct(products_payload)
+        result = products_service.addProduct(products_payload)
         assert result["status"] in (200,201)
        
         data = result["body"]["data"]
@@ -25,50 +25,50 @@ class TestCreateProduct:
         
 
 class TestGetProducts:
-    def test_get_all_products(self,products_page):
+    def test_get_all_products(self,products_service):
         logger.info("TEST: Get all Products")
-        result = products_page.getProducts()
+        result = products_service.getProducts()
         assert result["status"] == 200
         data = result["body"]
         assert isinstance(data, (dict,list))
         logger.info(f"No of products available: {len(data["data"])}")
         
-    def test_get_product_by_Id(self,products_page,create_product_id):
+    def test_get_product_by_Id(self,products_service,create_product_id):
         logger.info("TEST: Get Product Byt Id")
-        result = products_page.get_product_by_Id(create_product_id)
+        result = products_service.get_product_by_Id(create_product_id)
         assert result["status"] == 200
         data = result["body"]["data"]
         assert isinstance(data, (dict,list))
         assert data["id"] == create_product_id
         logger.info(f"Product Id: {data["id"] }exists for {data["data"]["name"]}")
         
-    def test_get_product_by_Id_not_exist(self,products_page):
+    def test_get_product_by_Id_not_exist(self,products_service):
         logger.info("TEST: Get Product Byt Id")
-        result = products_page.get_product_by_Id("5f9cf9a5-621e-4ddb-ace1-09b008bee46d")
+        result = products_service.get_product_by_Id("5f9cf9a5-621e-4ddb-ace1-09b008bee46d")
         assert result["status"] == 404
     
-    def test_get_product_by_Id_wrong_format(self,products_page):
+    def test_get_product_by_Id_wrong_format(self,products_service):
         logger.info("TEST: Get Product Byt Id")
-        result = products_page.get_product_by_Id("5f9cf9a5621e4ddbace1")
+        result = products_service.get_product_by_Id("5f9cf9a5621e4ddbace1")
         assert result["status"] in (404,500)
         
     
 class TestUpdateProduct:
-    def test_update_product_with_id(self,products_page,create_product_id):
+    def test_update_product_with_id(self,products_service,create_product_id):
         logger.info(f"TEST: Update Product by Id")
-        result = products_page.update_product_by_Id(create_product_id, {"data": {"stock": 210}})
+        result = products_service.update_product_by_Id(create_product_id, {"data": {"stock": 210}})
         assert result["status"] == 200
         data = result["body"]
         assert data["data"]["stock"] == 210
         logger.info(f"Stoclk value: { data["data"]["stock"]} is Updated for {create_product_id} at: {data["updatedAt"]}")
             
 class TestDeleteProduct:
-    def test_delete_products_by_id(self,products_page,create_product_id):
+    def test_delete_products_by_id(self,products_service,create_product_id):
         logger.info(f"TEST: Delete product with product id")
-        result = products_page.delete_product_by_Id(create_product_id)
+        result = products_service.delete_product_by_Id(create_product_id)
         assert result["status"] == 204
         
-    def test_delete_product_by_non_id_not_exist(self,products_page):
+    def test_delete_product_by_non_id_not_exist(self,products_service):
         logger.info(f"TEST: Delete product by giving non existant product id")
-        result = products_page.delete_product_by_Id("8faafe85-70f2-47cc-8cb9-4a292a8af73a")
+        result = products_service.delete_product_by_Id("8faafe85-70f2-47cc-8cb9-4a292a8af73a")
         assert result["status"] == 404 
