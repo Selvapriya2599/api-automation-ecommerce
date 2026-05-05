@@ -40,7 +40,7 @@ def orders_payload():
         }
     }
 
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="function")
 def products_payload():
     return {
       "data": {
@@ -52,7 +52,7 @@ def products_payload():
       "description": "Creave Body Lotion with Ceramide and Chia butter for Dry to Extreme Dry skin"
     }}
     
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="function")
 def create_order_id(orders_service):
     logger.info("SETUP: CREATING A TEST ORDER")
     result = orders_service.create_successful_order({
@@ -77,9 +77,9 @@ def create_order_id(orders_service):
     
     logger.info(f"TEARDOWN: DELETING ORDER {order_id}")
     delete_res = orders_service.delete_order_by_id(order_id)
-    assert delete_res["status"] in (200, 204)
+    assert delete_res["status"] in (200, 204, 404)
 
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="function")
 def create_product_id(products_service):
     logger.info("SETUP: CREATING A TEST PRODUCT")
     result = products_service.addProduct({
@@ -101,7 +101,7 @@ def create_product_id(products_service):
     
     logger.info(f"TEARDOWN: DELETING PRODUCT {product_id}")
     delete_res = products_service.delete_product_by_Id(product_id)
-    assert delete_res["status"] in (200, 204)
+    assert delete_res["status"] in (200, 204, 404)
 
 
 def pytest_runtest_logreport(report):

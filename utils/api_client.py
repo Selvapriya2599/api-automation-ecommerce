@@ -10,6 +10,7 @@ class APIClient:
         self.session = requests.Session()
         
     def _header(self,use_manage=False) -> dict:
+        
         key = MANAGE_KEY if use_manage else PUBLIC_KEY
         
         return {"x-api-key":key,"Content-Type": "application/json"}
